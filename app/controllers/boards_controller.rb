@@ -1,4 +1,6 @@
 class BoardsController < ApplicationController
+    before_action :set_board, only: [:show, :edit, :update]
+    
     def index
         @boards = Board.all
     end
@@ -12,10 +14,24 @@ class BoardsController < ApplicationController
     end
 
     def show
-        @board = Board.find(params[:id])
     end
 
-    def board_params
-        params.require(:board).permit(:name, :title, :body)
+    def edit
     end
+
+    def update
+        @board.update(board_params)
+
+        redirect_to board
+    end
+
+    private
+
+      def board_params
+          params.require(:board).permit(:name, :title, :body)
+      end
+
+      def set_board
+        @board = Board.find(params[:id])
+      end
 end
