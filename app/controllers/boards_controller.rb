@@ -23,6 +23,7 @@ def create
 end
 
 def show
+  @comment = @board.comments.new
 end
 
 def edit
