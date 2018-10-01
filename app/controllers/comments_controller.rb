@@ -6,13 +6,10 @@ class CommentsController < ApplicationController
       redirect_to comment.board
     else
       # redirect_back(fallback_location: comments_path)
-      # redirect_to comment.board, flash: {
-      #   comment: comment,
-      #   error_messages: comment.errors.full_messages
-      # }
-      redirect_back(fallback_location: comments_path)
-
-      
+      redirect_to comment.board, flash: {
+        comment: comment,
+        error_messages: comment.errors.full_messages
+      }
     end
   end
 
